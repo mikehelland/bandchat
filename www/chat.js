@@ -251,6 +251,4 @@ more soundsets
 
 disable login button till ready
 
-store users soundset on the server for new logings
-
 */

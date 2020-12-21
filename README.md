@@ -8,6 +8,10 @@ Select your instrument, and use your keyboard or a MIDI instrument connected by 
 
 (*Note: MIDI uses WebMIDI API which is only supported by Chrome.*)
 
+Try it out!
+
+https://openmedia.gallery/apps/bandchat?room=test
+
 ----
 
 This is an OMG App, it can be installed and ran on an OMG Server for the Apps Admin page.
