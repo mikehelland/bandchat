@@ -152,6 +152,10 @@
                 height:50px;
                 position: relative;
             }
+
+            #big-piano {
+                position: relative;
+            }
         </style>
     </head>
     <body>
@@ -188,6 +192,8 @@
             </div>
         </div>
 
+        <div id="big-piano">
+        </div>
 
         </div>
 
@@ -199,7 +205,7 @@
         <script src="/apps/music/js/omusic_player.js"></script>
         <script src="/apps/music/js/libs/peakmeter_basic.js"></script>
         <script src="/apps/music/js/webmidi.js"></script>
-        <script src="/apps/music/js/piano_canvas.js"></script>
+        <script src="/apps/music/js/piano_surface.js"></script>
         <script src="chat.js"></script>
         
         <script>
@@ -211,10 +217,12 @@
             }
         })
 
-        var roomSelect = document.getElementById("room-name-input")
         if (roomName) {
             document.getElementById("room-name-area").innerHTML = 
                 "<div class='readonly-text-room'>" + roomName + "</div>"
+        }
+        else {
+            var roomSelect = document.getElementById("room-name-input")
         }
         
         var user
@@ -278,11 +286,14 @@
                 musicChat.setupPlayer()
             }
         
-            roomName = roomSelect.value
-            if (roomSelect.selectedIndex === 1 && user) {
-                roomName = user.username
+            // we there's no select box, that means we have a roomName
+            if (roomSelect) {
+                roomName = roomSelect.value
+                if (roomSelect.selectedIndex === 1 && user) {
+                    roomName = user.username
+                }
             }
-            roomName = "/apps/chat/?room=" + roomName
+            roomName = window.location.pathname + "?room=" + roomName
             userName = userNameInput.value || (Math.round(Math.random() * 100000) + "")
 
             document.getElementById("your-name").innerHTML = userName

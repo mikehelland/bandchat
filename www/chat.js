@@ -1,5 +1,9 @@
 function OMGMusicChat(rt, onready) {
     this.rt = rt
+    this.pianoDiv = document.getElementById("big-piano")
+    this.piano = new PianoSurface(this.pianoDiv)
+    this.piano.setupEvents(key => this.noteOn(key.note, 60, this.user),
+                           key => this.noteOff(key.note, this.user))
 }
 
 OMGMusicChat.prototype.setupPlayer = function () {
@@ -235,7 +239,7 @@ OMGMusicChat.prototype.makePianoCanvas = function (user) {
     user.pianoCanvas.className = "piano-canvas"
     user.div.appendChild(user.pianoCanvas)
 
-    user.piano = new PianoCanvas(user.pianoCanvas)
+    user.piano = new PianoSurface(user.pianoCanvas)
 
 }
 
